@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Environment files and secrets
+*.pem
+*.key
+secrets/
+
+# PyCharm
+.idea/
