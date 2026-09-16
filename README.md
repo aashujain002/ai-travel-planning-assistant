@@ -1,5 +1,7 @@
 # Singapore Travel Assistant
 
+**GitHub Repository:** [View the source code on GitHub](https://github.com/aashujain002/ai-travel-planning-assistant)
+
 ## 1. Project Overview
 
 Singapore Travel Assistant is a grounded travel-planning application for Singapore.
@@ -13,7 +15,7 @@ The assistant distinguishes between:
 - Stable destination knowledge retrieved from the knowledge base.
 - Official day-by-day itinerary guidance when an exact itinerary match exists.
 - Live weather and exchange-rate data retrieved through MCP.
-- Clearly labelled AI recommendations grounded in the supplied evidence.
+- Clearly labeled AI recommendations grounded in the supplied evidence.
 
 ## 2. Assignment Requirements Covered
 
