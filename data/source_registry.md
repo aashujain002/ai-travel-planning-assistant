@@ -4,7 +4,13 @@
 |--------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------|
 | Wikivoyage Singapore Travel Guide    | https://en.wikivoyage.org/wiki/Singapore                                                                              | Broad, practical travel guidance and destination context. |
 | Visit Singapore – Plan Your Trip     | https://www.visitsingapore.com/mice/en/tools-and-resources/plan-your-trip/                                            | Official visitor information and trip-planning guidance. |
-| Visit Singapore – Travel Itineraries | https://www.visitsingapore.com/content/dam/desktop/global/about-singapore/traveller-information/guides/mv_main_en.pdf | Example activity sequences and trip structures. |
+| Visit Singapore – Official Itineraries | https://www.visitsingapore.com/travel-tips/travelling-to-singapore/itineraries/ | Official multi-day and family itinerary guidance. |
+
+### Selected Official Itinerary Pages
+
+- [4 Days in Singapore](https://www.visitsingapore.com/travel-tips/travelling-to-singapore/itineraries/4-days-in-singapore/)
+- [Enjoy Singapore in 7 Days](https://www.visitsingapore.com/travel-tips/travelling-to-singapore/itineraries/7-days-in-singapore/)
+- [Family Getaway in Singapore](https://www.visitsingapore.com/travel-tips/travelling-to-singapore/itineraries/places-to-visit-with-family/)
 
 ## Why these sources?
 

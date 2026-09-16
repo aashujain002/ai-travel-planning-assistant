@@ -43,24 +43,25 @@ Status: accessible (redirects to the Singapore Destination Guide)
 - Visa rules, tax refunds, events, and transport details can change; link to or verify the current official information when responding.
 - Review the Visit Singapore terms of use before storing or reusing page content.
 
-## 3. Visit Singapore – Travel Itineraries
+## 3. Visit Singapore – Official Itineraries
 
-URL: https://www.visitsingapore.com/content/dam/desktop/global/about-singapore/traveller-information/guides/mv_main_en.pdf  
+URL: https://www.visitsingapore.com/travel-tips/travelling-to-singapore/itineraries/  
 Status: accessible
 
+### Selected pages
+- **4 Days in Singapore:** https://www.visitsingapore.com/travel-tips/travelling-to-singapore/itineraries/4-days-in-singapore/
+- **Enjoy Singapore in 7 Days:** https://www.visitsingapore.com/travel-tips/travelling-to-singapore/itineraries/7-days-in-singapore/
+- **Family Getaway in Singapore:** https://www.visitsingapore.com/travel-tips/travelling-to-singapore/itineraries/places-to-visit-with-family/
+
 ### Useful sections
-- **Multi-day itinerary sequencing:** Day-by-day activity groupings can help the RAG system suggest a sensible pace and order for short stays.
-- **Cultural experiences:** Heritage, arts, and local-culture recommendations support questions about distinctive Singapore experiences.
-- **Food experiences:** Dining and hawker-food suggestions help answer food-focused queries within a planned day.
-- **Attractions:** Featured sights provide itinerary-ready attraction options and context for comparing experiences.
-- **Family and traveler profiles:** Profile-specific recommendations help tailor plans to group such as families or visitors with different interests.
-- **Indoor activities:** Weather-independent options improve recommendations during rain or for visitors seeking air-conditioned activities.
-- **Outdoor activities:** Parks, waterfronts, and open-air experiences support nature and active-travel recommendations.
+- **Introduction:** Provides the itinerary's purpose and traveller context.
+- **Day sections:** Preserve multi-day sequencing for practical itinerary recommendations.
+- **Activity tiles:** Supply attraction, food, culture, neighbourhood, and family-experience details.
 
 ### Acquisition format
-- `.pdf` because the source is a 23-page itinerary document whose page layout and visual grouping may carry useful context.
+- `.html` pages via HTTP.
 
 ### Notes
-- The PDF endpoint is accessible, but the current inspection tool exposes raw PDF data rather than rendered text; text-extraction quality, scanned pages, tables, and layout-specific issues must be assessed during the later extraction step.
-- Preserve page numbers when processing so retrieved content can be cited and itinerary sequences retain their original context.
-- Review the Visit Singapore terms of use before storing or reusing document content.
+- The hub and individual pages use AEM structured component data rather than consistently rendered HTML headings.
+- Four- and seven-day itineraries use `stb-things-to-do`; Family Getaway uses `stb-title-with-slider`. Both normalize into the same itinerary, section, and activity model.
+- Review the Visit Singapore terms of use before storing or reusing page content.

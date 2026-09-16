@@ -222,5 +222,8 @@ __marimo__/
 *.key
 secrets/
 
+# Generated vector database
+data/vectorstore/
+
 # PyCharm
 .idea/

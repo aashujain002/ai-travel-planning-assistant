@@ -6,7 +6,7 @@
 |--------------------------------------|---------------------------------|--------|----------------------------------------------------------------------------------------------------------------|
 | Wikivoyage Singapore Travel Guide    | wikivoyage_singapore.html       | HTML   | Neighbourhoods, attractions, activities, food, transport, culture, and practical tips.                         |
 | Visit Singapore – Plan Your Trip     | visit_singapore_plan.html       | HTML   | Official visitor preparation, transport, payment basics, practical tips, events, and itinerary ideas.          |
-| Visit Singapore – Travel Itineraries | visit_singapore_itineraries.pdf | PDF    | Multi-day itineraries, cultural and food experiences, attractions, and indoor, outdoor, and family activities. |
+| Visit Singapore – Official Itineraries | 4-day, 7-day, and family itinerary HTML pages | HTML | Official multi-day sequencing, activities, attractions, food, culture, and family experiences. |
 
 ## 2. Document Metadata
 
@@ -20,9 +20,8 @@ Each document/chunk should preserve:
 ## 3. Processing Pipeline
 
 Source
-→ Load
-→ Clean
-→ Create LangChain Documents
+→ Source-specific extraction
+→ Normalize into LangChain Documents
 → Split into chunks
 → Add/preserve metadata
 → Generate embeddings

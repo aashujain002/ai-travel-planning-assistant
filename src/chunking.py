@@ -1,23 +1,13 @@
-from pathlib import Path
+from collections import Counter
 
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from document_builder import sections_to_documents
-from ingestion import clean_wikivoyage_html
-from section_parser import parse_sections
+from document_builder import load_all_documents
 
 
 CHUNK_SIZE = 1200
 CHUNK_OVERLAP = 150
-RAW_HTML_PATH = (
-    Path(__file__).resolve().parent.parent
-    / "data"
-    / "raw"
-    / "wikivoyage_singapore.html"
-)
-
-
 def split_documents(documents: list[Document]) -> list[Document]:
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=CHUNK_SIZE,
@@ -27,10 +17,10 @@ def split_documents(documents: list[Document]) -> list[Document]:
 
 
 def main() -> None:
-    raw_html = RAW_HTML_PATH.read_text(encoding="utf-8")
-    documents = sections_to_documents(parse_sections(clean_wikivoyage_html(raw_html)))
+    documents = load_all_documents()
     chunks = split_documents(documents)
 
+    source_counts = Counter(document.metadata["source"] for document in documents)
     cbd_document = next(
         document
         for document in documents
@@ -56,6 +46,9 @@ def main() -> None:
     ]
 
     print(f"Before chunking: {len(documents)} Documents")
+    print("Documents by source:")
+    for source, count in source_counts.items():
+        print(f"- {source}: {count}")
     print(f"After chunking: {len(chunks)} chunks")
     print("\nSingapore CBD section:")
     print(f"number of chunks: {len(cbd_chunks)}")
