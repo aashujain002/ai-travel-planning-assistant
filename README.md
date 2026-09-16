@@ -352,9 +352,19 @@ What are indoor activities in Singapore?
 Representative output excerpt:
 
 ```text
-Indoor activities in Singapore include Snow City, ice skating,
-cultural performances at the Esplanade, cinemas, and shopping-related options.
-[Wikivoyage Singapore Travel Guide](https://en.wikivoyage.org/wiki/Singapore)
+Here are some indoor activities you can enjoy in Singapore:
+
+Indoor Snow Activities: Visit Snow City, a permanent indoor snow center where you can play in the snow or learn to ski and snowboard with certified instructors. Ice skating is also available at Kallang Ice World at Leisure Park Kallang (Wikivoyage Singapore Travel Guide).
+
+Cultural Performances: Attend performances at the Esplanade theatre in Marina Bay, which hosts a variety of cultural events, including concerts by the Singapore Symphony Orchestra and the Singapore Chinese Orchestra (Wikivoyage Singapore Travel Guide).
+
+Movies: Enjoy a movie at one of the major cinema chains like Carnival Cinemas, Golden Village, or Shaw Brothers. Look for films with "NC16," "M18," or "R21" ratings for fewer cuts (Wikivoyage Singapore Travel Guide).
+
+Gambling: Try your luck at one of Singapore's two massive casinos, Marina Bay Sands or Resorts World Sentosa. Foreign visitors can enter for free with a passport (Wikivoyage Singapore Travel Guide).
+
+Shopping: Explore the numerous shopping malls concentrated in Orchard Road, Bugis, and Marina Bay, where you can find a variety of retail options (Wikivoyage Singapore Travel Guide).
+
+These activities provide a mix of entertainment, culture, and leisure, perfect for indoor enjoyment in Singapore.
 ```
 
 ### Currency conversion
@@ -366,10 +376,7 @@ Convert 100 SGD to INR.
 Representative output excerpt; rates are live and therefore change:
 
 ```text
-Currency conversion:
-100 SGD = 7541.40 INR
-Exchange rate: 1 SGD = 75.414 INR
-Rate date: 2026-09-15
+100 SGD is equivalent to 7541.40 INR, based on the exchange rate of 1 SGD = 75.414 INR.
 
 Current-data source: Currency MCP (Frankfurter).
 ```
@@ -383,29 +390,56 @@ Give me a 4-day Singapore itinerary.
 Retrieves the matching official four-day itinerary sections in Day 1 through Day 4
 order.
 
+```text
+Here is a 4-day itinerary for your trip to Singapore:
+
+Day 1: Explore the City
+Morning: Start your day with breakfast in Kampong Gelam, a culturally rich area. Enjoy a classic Singapore-style breakfast at Zam Zam Restaurant, known for its prata and curry. Then, explore Haji Lane, a hipster area with indie shops.
+Afternoon: Head to the Civic District for lunch at Raffles Hotel, followed by a visit to Long Bar, the birthplace of the Singapore Sling cocktail. Conclude your afternoon at the National Gallery Singapore, showcasing modern Southeast Asian art.
+Evening: Take a traditional bumboat cruise on the Singapore River. For dinner, visit Offtrack for Pan Asian cuisine and cocktails, or PLUME for unique cocktails and appetizers.
+Day 2: Visit Neighborhoods
+Morning: Explore the Katong-Joo Chiat area, famous for its colorful heritage shophouses. Enjoy breakfast at Chin Mee Chin Confectionery, known for its fluffy buns and kaya jam. Visit Kim Choo Kueh Chang for Peranakan culture souvenirs.
+Afternoon: Discover Chinatown, where you can visit Maxwell Food Centre for local chicken rice and sugarcane juice, followed by the Buddha Tooth Relic Temple.
+Evening: Experience the iconic Marina Bay area, shop at The Shoppes at Marina Bay Sands, and enjoy a seafood dinner at Red House Seafood.
+Day 3: Be One with Nature (plus a spot of shopping)
+Morning: Visit the Singapore Botanic Gardens, a UNESCO World Heritage Site, and the National Orchid Garden. Enjoy brunch at The Halia, located in the Ginger Garden.
+Afternoon: Head to Orchard Road for shopping, then visit Design Orchard for local fashion and lifestyle brands. Enjoy Peranakan cuisine at Violet Oon.
+Evening: Explore Bugis Street Market for bargains, then head to Little India for dinner at Banana Leaf Apolo, famous for fish head curry. Finish your day at Mustafa Centre, a 24-hour shopping complex.
+Day 4: Animals Galore
+Morning: Visit Mandai to explore the Bird Paradise, home to over 3,500 birds, or the Singapore Zoo, known for its free-roaming animals.
+Evening: Enjoy a meal at Mandai Wildlife West, then embark on the Night Safari, the world's first nocturnal safari experience.
+This itinerary offers a mix of cultural experiences, nature, and culinary delights, ensuring a well-rounded visit to Singapore.
+
+Source: Visit Singapore – Official Itineraries
+```
+
 ### Weather-aware planning
 
 ```text
-Plan a 3-day Singapore itinerary starting September 21, 2026
-and adjust it based on the weather.
+Plan a 3-day Singapore itinerary starting September 21, 2026 and adjust it based on the weather.
 ```
 
 Representative output excerpt:
 
 ```text
-No matching official itinerary is available.
+Here is a 3-day itinerary for your trip to Singapore starting September 21, 2026, adjusted based on the weather forecast.
 
-Recommendations:
-Based on the supplied activity evidence and forecast, here is a suggested
-three-day plan. This is an AI recommendation, not an official three-day itinerary.
+Day 1: September 21, 2026
+Morning: Start your day with breakfast in Kampong Gelam. Explore Haji Lane, a vibrant area with indie shops. Expect slight rain showers, so consider bringing an umbrella.
+Afternoon: Visit the National Gallery Singapore to enjoy modern Southeast Asian art. Given the weather, this indoor activity is a great choice (Wikivoyage Singapore Travel Guide).
+Evening: Take a traditional bumboat cruise on the Singapore River. For dinner, visit Offtrack for Pan Asian cuisine or PLUME for unique cocktails and appetizers.
+Day 2: September 22, 2026
+Morning: Explore the Katong-Joo Chiat area, famous for its colorful heritage shophouses. Enjoy breakfast at Chin Mee Chin Confectionery. Expect moderate drizzle, so plan for indoor activities if needed.
+Afternoon: Discover Chinatown, where you can visit Maxwell Food Centre for local chicken rice and sugarcane juice, followed by the Buddha Tooth Relic Temple (Wikivoyage Singapore Travel Guide).
+Evening: Experience the iconic Marina Bay area, shop at The Shoppes at Marina Bay Sands, and enjoy a seafood dinner at Red House Seafood (Wikivoyage Singapore Travel Guide).
+Day 3: September 23, 2026
+Morning: Visit Mandai to explore the Bird Paradise or the Singapore Zoo. Light drizzle is expected, so dress accordingly (Wikivoyage Singapore Travel Guide).
+Afternoon: Enjoy lunch at Mandai Wildlife West. If the weather permits, consider a scenic walk along the Mandai Boardwalk (Wikivoyage Singapore Travel Guide).
+Evening: Embark on the Night Safari, the world's first nocturnal safari experience (Wikivoyage Singapore Travel Guide).
+This itinerary offers a mix of cultural experiences, nature, and culinary delights, ensuring a well-rounded visit to Singapore while considering the weather conditions.
 
 Current-data source: Weather MCP (Open-Meteo).
 ```
-
-The request retrieves supplementary activity evidence and weather for September 21
-through September 23. Because the corpus has no dedicated official three-day
-itinerary, any plan is an AI recommendation grounded in available activity evidence,
-not an official three-day itinerary.
 
 ### Multi-turn preferences
 
@@ -418,6 +452,20 @@ What should I do tomorrow?
 The current conversation retains the extracted cultural, food, and shopping
 preferences. Final synthesis uses them as context while destination facts continue to
 come from retrieved evidence.
+
+```text
+Based on your preferences for cultural activities, food, and shopping, here are some suggestions for what you can do tomorrow in Singapore:
+
+Cultural Exploration: Visit the Sri Mariamman Temple in Chinatown, which is the oldest Hindu temple in Singapore. It's a beautiful site that showcases intricate architecture and is open to visitors outside of service times (Wikivoyage Singapore Travel Guide).
+
+Food Experience: Head to a hawker centre for an authentic local food experience. You can try various dishes at affordable prices, such as chicken rice, laksa, or satay. Popular hawker centres include Maxwell Food Centre and Lau Pa Sat (Wikivoyage Singapore Travel Guide).
+
+Shopping: Spend some time shopping in Orchard Road, which is known for its concentration of shopping malls. You can find everything from luxury brands to local boutiques (Wikivoyage Singapore Travel Guide).
+
+Cultural Performance: If you're interested in the arts, check out what's on at the Esplanade theatre. It often hosts performances by the Singapore Symphony Orchestra and other cultural events (Wikivoyage Singapore Travel Guide).
+
+These activities will allow you to immerse yourself in Singapore's rich culture while enjoying delicious food and shopping opportunities.
+```
 
 ## 16. Data Sources
 

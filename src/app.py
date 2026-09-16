@@ -21,6 +21,7 @@ from router import route_question
 
 
 WELCOME_MESSAGE = "Hello! Ask me anything about Singapore."
+DATE_CLARIFICATION = "Which day would you like the trip to start?"
 
 
 def apply_theme() -> None:
@@ -187,13 +188,25 @@ def initialize_session_state() -> None:
 
 def process_question(question: str, conversation_state: ConversationState) -> str:
     """Run the existing orchestration flow for one chat message."""
+    history = get_conversation_history(conversation_state)
+    question_for_processing = question
+    if (
+        len(history) >= 2
+        and history[-1].role == "assistant"
+        and history[-1].content == DATE_CLARIFICATION
+        and history[-2].role == "user"
+    ):
+        question_for_processing = (
+            f"{history[-2].content}\n\nAdditional date information: {question}"
+        )
+
     add_user_message(conversation_state, question)
     for preference in extract_preferences(question):
         if preference not in conversation_state.preferences:
             conversation_state.preferences.append(preference)
 
-    decision = route_question(question)
-    extracted_parameters = extract_parameters(question)
+    decision = route_question(question_for_processing)
+    extracted_parameters = extract_parameters(question_for_processing)
     parameters, date_clarification = resolve_request_dates(extracted_parameters)
     clarification = date_clarification or validate_capability_parameters(
         decision.capabilities, parameters
@@ -202,10 +215,12 @@ def process_question(question: str, conversation_state: ConversationState) -> st
         answer = clarification
     else:
         evidence = asyncio.run(
-            execute_capabilities(question, decision.capabilities, parameters)
+            execute_capabilities(
+                question_for_processing, decision.capabilities, parameters
+            )
         )
         answer = generate_answer(
-            question,
+            question_for_processing,
             evidence,
             get_conversation_history(conversation_state),
         )

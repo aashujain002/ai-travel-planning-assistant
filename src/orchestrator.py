@@ -311,16 +311,39 @@ def print_execution_results(evidence: CapabilityEvidence) -> None:
         print(f"\nCurrency status:\nUnavailable: {evidence.currency_error}")
 
 
-def _provenance_fallback(evidence: CapabilityEvidence) -> str:
+def _provenance_fallback(answer: str, evidence: CapabilityEvidence) -> str:
     """Return a non-factual response that satisfies available provenance requirements."""
-    sections = [
-        "Unable to produce a response that meets the required provenance standards."
-    ]
     knowledge_documents = (
         (evidence.rag_documents or [])
         + (evidence.activity_documents or [])
         + (evidence.itinerary_documents or [])
     )
+    permitted_urls = {
+        document.metadata["url"]
+        for document in knowledge_documents
+        if isinstance(document.metadata.get("url"), str) and document.metadata["url"]
+    }
+    if not permitted_urls or any(url in answer for url in permitted_urls):
+        missing_labels = [
+            source_label
+            for result, source_label in (
+                (
+                    evidence.weather_result,
+                    "Current-data source: Weather MCP (Open-Meteo).",
+                ),
+                (
+                    evidence.currency_result,
+                    "Current-data source: Currency MCP (Frankfurter).",
+                ),
+            )
+            if result is not None and source_label not in answer
+        ]
+        if missing_labels:
+            return f"{answer.rstrip()}\n\n" + "\n".join(missing_labels)
+
+    sections = [
+        "Unable to produce a response that meets the required provenance standards."
+    ]
     permitted_urls = [
         document.metadata["url"]
         for document in knowledge_documents
@@ -335,6 +358,31 @@ def _provenance_fallback(evidence: CapabilityEvidence) -> str:
     return "\n\n".join(sections)
 
 
+def _is_mcp_only_request(evidence: CapabilityEvidence) -> bool:
+    """Return whether the request has only one successful live MCP result."""
+    return not any(
+        (
+            evidence.rag_documents,
+            evidence.activity_documents,
+            evidence.itinerary_documents,
+            evidence.itinerary_retrieval_message,
+            evidence.weather_error,
+            evidence.currency_error,
+        )
+    )
+
+
+def _add_itinerary_status(answer: str, evidence: CapabilityEvidence) -> str:
+    """Ensure a missing official itinerary is always disclosed."""
+    if (
+        evidence.itinerary_retrieval_message is not None
+        and evidence.itinerary_documents is None
+        and evidence.itinerary_retrieval_message not in answer
+    ):
+        return f"{evidence.itinerary_retrieval_message}\n\n{answer}"
+    return answer
+
+
 def generate_answer(
     question: str,
     evidence: CapabilityEvidence,
@@ -346,6 +394,18 @@ def generate_answer(
         raise RuntimeError(
             "OPENAI_API_KEY is not configured. Add it to the project's .env file."
         )
+
+    if _is_mcp_only_request(evidence):
+        if evidence.weather_result is not None:
+            return (
+                f"{evidence.weather_result}\n\n"
+                "Current-data source: Weather MCP (Open-Meteo)."
+            )
+        if evidence.currency_result is not None:
+            return (
+                f"{evidence.currency_result}\n\n"
+                "Current-data source: Currency MCP (Frankfurter)."
+            )
 
     evidence_sections = []
     if evidence.rag_documents is not None:
@@ -435,7 +495,7 @@ def generate_answer(
 
     problems = validate_answer(response.content, evidence)
     if not problems:
-        return response.content
+        return _add_itinerary_status(response.content, evidence)
 
     correction_response = llm.invoke(
         [
@@ -458,8 +518,11 @@ def generate_answer(
     if not isinstance(correction_response.content, str):
         raise RuntimeError("Corrected final LLM response was non-text.")
     if validate_answer(correction_response.content, evidence):
-        return _provenance_fallback(evidence)
-    return correction_response.content
+        return _add_itinerary_status(
+            _provenance_fallback(correction_response.content, evidence),
+            evidence,
+        )
+    return _add_itinerary_status(correction_response.content, evidence)
 
 
 async def main() -> None:

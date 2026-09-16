@@ -96,7 +96,9 @@ async def test_currency_mcp() -> None:
     decision, _, evidence, answer = await run_question("Convert 100 SGD to INR.")
     assert "currency" in decision.capabilities
     assert evidence is not None and evidence.currency_result is not None
-    assert answer is not None and CURRENCY_SOURCE_LABEL in answer
+    assert answer is not None
+    assert evidence.currency_result in answer
+    assert CURRENCY_SOURCE_LABEL in answer
 
 
 async def test_combined_rag_and_mcp() -> None:
